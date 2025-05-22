@@ -1,0 +1,155 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS exchangebooks;
+USE exchangebooks;
+
+-- Create 'users' table
+CREATE TABLE users (
+  username VARCHAR(50) NOT NULL PRIMARY KEY,
+  password VARCHAR(80) NOT NULL,
+  credits INT DEFAULT 0,
+  location VARCHAR(70) NOT NULL
+);
+
+-- Create 'books' table
+CREATE TABLE books (
+  username VARCHAR(50),
+  title VARCHAR(100),
+  author VARCHAR(100),
+  book_condition VARCHAR(20),
+  FOREIGN KEY (username) REFERENCES users(username)
+);
+
+-- Create 'transactions' table
+CREATE TABLE transactions (
+  buyer_name VARCHAR(50),
+  seller_name VARCHAR(50),
+  book_title VARCHAR(100),
+  FOREIGN KEY (buyer_name) REFERENCES users(username),
+  FOREIGN KEY (seller_name) REFERENCES users(username)
+);
+
+-- Insert data into 'users'
+INSERT INTO users VALUES 
+('Aadam20','A@d24am',10,'Wayanad, Kerala'),
+('Abdu11ahh','ABbkgk',20,'Nirmal, Telengana'),
+('Afraa0','123789',13,'Kolkata, West Bengal'),
+('Akshay876','75tJkgk',10,'Pune, Maharashtra'),
+('Alen22','ejIk98k',10,'Mumbai, Maharashtra'),
+('Aminaa674','aami23na',0,'Rajkot, Gujarat'),
+('Ashwathyy','ash678',10,'Kollam, Kerala'),
+('Asna123','Asn@567',0,'Mumbai, Maharashtra'),
+('Bhaavnnaa','B345na',23,'North Goa, Goa'),
+('Devvnanda','Dev89da',33,'Kavaratti, Lakshwadeep'),
+('fathima1','123456',16,'Lucknow, U.P'),
+('gOPAL23','gooo0o',30,'Pondichery, Puduchery'),
+('Greesh3ma','imGree3',0,'Udupi , Karnataka'),
+('Hadi','7hadil9',10,'Ahmedabad, Gujarat'),
+('Harikk7','12harii',0,'Buxar, Bihar'),
+('Hibbaa78','H876iKy',0,'Amritsar, Punjab'),
+('Hoorainn202','h%23ain',13,'Nagaon, Assam'),
+('Joe55','678a',0,'South Goa,Goa'),
+('Judeei','Jud89it',13,'Surat, Gujarat'),
+('KeerthanaK','Keerth@89',0,'Kolkata, West Bengal'),
+('lekshmi334','123l',10,'Goalpara,Assam'),
+('Lizaa4h','Lizz10',0,'Namchi, Sikkim'),
+('MalavikaRaj','Malu789',3,'Gandhinagar, Gujarat'),
+('MariyamZuha','MariyamZ123',0,'Jaipur, Rajasthan'),
+('Maryy0','www456',23,'Kullu, Himachal Pradesh'),
+('Neha123','nehaneha2004',0,'Kottayam, Kerala'),
+('Nilankshi12','Nil@123',10,'Bhopal, Madhya Pradesh'),
+('Nirmall1','n986ghk',10,'Bengaluru, Karnataka'),
+('Noushaa6D','Saaj',16,'Mumbai, Maharashtra'),
+('pradeepV','V1646',3,'Hyderabad, Telengana'),
+('Raakesh','12890',10,'Panaji, Goa'),
+('raDHika888','radhiii101',0,'Indore, Madhya Pradesh'),
+('Richardd','riii8',0,'Kannur, Kerala'),
+('Riya789','Riya@456',10,'Chennai, Tamil Nadu'),
+('Rohan7','uJkl49i',0,'Ahmedabad, Gujarat'),
+('sajan aboos','inco',6,'Kavaratti, Lakshwadeep'),
+('Shahraa0','shA789Hraa',10,'Varanasi, U.P'),
+('Tina567','TINATINA123',0,'Dhalai, Tripura'),
+('Unnimayaa0','kgIRj',13,'Coimbatore, TamilNadu'),
+('Vamika8','Va234',23,'Udaipur, Rajasthan'),
+('Vismaa76ya','Vis345',10,'Madurai , TamilNadu'),
+('William8','w888',0,'Chennai, TamilNadu'),
+('Zoya3','zuzuu2025',0,'Kasaragod, Kerala');
+
+-- Insert data into 'books'
+INSERT INTO books VALUES
+('Vamika8','MAKING INDIA AWESOME','CHETAN BHAGAT','Good'),
+('Joe55','A BEND IN THE RIVER','V.S NAIPAUL','Very good'),
+('Devvnanda','A BUNCH OF OLD LETTER ','JAWAHARLAL NEHRU','Like new'),
+('Maryy0','A VILLAGE BY THE SEA ','ANITA DESAI','Good'),
+('Vamika8','AN EQUAL MUSIC','VIKRAM SETH','Good'),
+('Aadam20','BROKEN WINGS','SAROJINI NAIDU','Very good'),
+('Ashwathyy','BUBBLE','MULK RAJ ANAND','Good'),
+('Devvnanda','CLEAR LIGHT OF DAY','ANITA DESAI','Good'),
+('Maryy0','GOLDEN THRESHOLD','SAROJINI NAIDU','Good'),
+('Alen22','IT\'S ALWAYS POSSIBLE','KIRAN BEDI','Good'),
+('Greesh3ma','IGNITED MINDS','A.P.J ABDUL KALAM','Very good'),
+('Aminaa674','SEVEN SUMMERS','MULK RAJ ANAND','good'),
+('Abdu11ahh','TIME MACHINE','H.G WELLS','Like new'),
+('Judeei','THE WORLD AS I SEE IT','ALBERT EINSTEIN','Good'),
+('Bhaavnnaa','HAMLET','WILLIAM SHAKESPEARE','Good'),
+('gOPAL23','WE, INDIANS','KHUSHWANT SINGH','Very good'),
+('Maryy0','A TALE OF TWO CITIES','CHARLES DICKENS','Good'),
+('Judeei','AN AUTOBIOGRAPHY','JAWAHAR LAL NEHRU','Very good'),
+('Abdu11ahh','THE SOCIAL CONTRACT','JEAN J. ROUSSEAU','Good'),
+('lekshmi334','ALICE IN WONDERLAND','LEWIS CARROL','Good'),
+('Vamika8','THE ROOM ON THE ROOF','RUSKIN BOND','Very good'),
+('fathima1','WAR AND PEACE','LOE TOLSTOY','Good'),
+('Vismaa76ya','THE WHITE TIGER','ARAVIND ADIGA','Very good'),
+('gOPAL23','THE HOUSE OF THE SPIRITS','ISABEL ALLENDE','Good'),
+('fathima1','LITTLE WOMEN','LOUISA MAY ALCOTT','Very good'),
+('Alen22','THE JUNGLE BOOK','RUDYARD KIPLING','Good'),
+('Nirmall1','INVISIBLE CITIES','ITALO CALVINO','Good'),
+('Bhaavnnaa','THE ALCHEMIST','PAULO COELHO','Poor'),
+('Rohan7','CHARLIE AND THE CHOCOLATE FACTORY','ROALD DAHL','Good'),
+('gOPAL23','THE STORY OF MY EXPERIMENTS WITH THE TRUTH','MAHATMA GANDHI','New'),
+('Aadam20','MODERN CHEMISTRY','A.O THOMAS','Poor'),
+('Lizaa4h','THE RICHEST MAN IN BABYLON','GEORGE S. CLASON','Good'),
+('Shahraa0','SHERLOCK HOMES VOLUME 2','SIR ARTHUR CONAN DOYLE','Good'),
+('lekshmi334','A BRIEF HISTORY OF TIME','STEPHEN HAWKING','Very good'),
+('Akshay876','THE POWER OF YOUR SUBCONSCIOUS MIND','DR. JOSEPH MURPHY ','Good'),
+('Vamika8','NO TURNING BACK','TRACY BUCHANAN','Very good'),
+('Bhaavnnaa','HOW TO WIN FRIENDS AND INFLUENCERS','DALE CARNEGIE','Good'),
+('Aadam20','ONE MOMENT,ONE MORNING','SARAH RAYNER','Very good'),
+('Devvnanda','13 MINUTES','SARAH PINBOROUGH','Very good'),
+('Maryy0','A MIDSUMMER NIGHT\'S DREAM','WILLIAM SHAKESPEARE','Good'),
+('gOPAL23','THE 3 MISTAKES OF MY LIFE','CHETAN BHAGAT','Fair'),
+('Judeei','THE DIARY OF A YOUNG GIRL','ANN FRANK','Good'),
+('MalavikaRaj','GITANJALI','RABINDRANATH TAGORE','Good'),
+('sajan aboos','THE WINNING EDGE','DR. LENNY','Like New'),
+('sajan aboos','YOU CAN WIN ','SHIV KHERA','good'),
+('Harikk7','THE WOMAN CODE','SOPHIA A. NELSON','Very Good'),
+('Hadi','LIFE OF PI','YANN MARTEL','Good'),
+('Raakesh','PRIDE AND PREJUDICE','JANE AUSTEN','Good'),
+('Neha123','MAKE IT HAPPEN','LARA CASEY','Good'),
+('Nilankshi12','The Night Circus','Erin Morgenstern','Good'),
+('Riya789','To Kill a Mockingbird','Harper Lee','Very Good');
+
+-- Insert data into 'transactions'
+INSERT INTO transactions VALUES
+('Lizaa4h','Bhaavnnaa','A FINE BALANCE'),
+('fathima1','Nirmall1','THE INTERPRETER OF MALADIES'),
+('Aadam20','Vamika8','A SUITABLE BOY'),
+('Devvnanda','Bhaavnnaa','GOD OF SMALL THINGS'),
+('Akshay876','Unnimayaa0','THE GLASS PALACE'),
+('Alen22','Joe55','RED EARTH AND POURING RAIN'),
+('Lizaa4h','Nirmall1','TRAIN TO PAKISTAN'),
+('lekshmi334','Maryy0','THE COLLECTED POEMS'),
+('Shahraa0','Devvnanda','THE AUTOBIOGRAPHY OF AN UNKNOWN INDIAN'),
+('Greesh3ma','Judeei','GULLIVER\'S TRAVELS'),
+('Unnimayaa0','Vamika8','FRANKENSTEIN'),
+('gOPAL23','fathima1','EMMA'),
+('Rohan7','Vismaa76ya','LITTLE WOMEN'),
+('Hoorainn202','Abdu11ahh','THE WAY WE LIVE NOW'),
+('Nirmall1','Alen22','KIDNAPPED'),
+('Akshay876','Vismaa76ya','THREE MEN IN A BOAT'),
+('Bhaavnnaa','Afraa0','THE DIARY OF A YOUNG GIRL'),
+('MalavikaRaj','Unnimayaa0','GITANJALI'),
+('MalavikaRaj','Noushaa6D','LONG WALK TO FREEDOM'),
+('sajan aboos','MalavikaRaj','DREAMS FROM MY FATHER'),
+('sajan aboos','fathima1','AS YOU LIKE IT'),
+('Harikk7','sajan aboos','YOU CAN WIN'),
+('Neha123','Hoorainn202','THE BLUE UMBRELLA');
